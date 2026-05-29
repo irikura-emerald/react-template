@@ -1,0 +1,42 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - APP_NAME=${APP_NAME}
+        ports:
+            - 3000:3000
+        environment:
+            - DATABASE_URL=${DATABASE_URL}
+            - REDIS_URL=${REDIS_URL}
+            - TZ=Asia/Tokyo
+        volumes:
+            - .:/usr/src/app/${APP_NAME}
+        depends_on:
+            - postgres
+            - redis
+
+    postgres:
+        image: postgres:latest
+        environment:
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${POSTGRES_DB}
+            - TZ=Asia/Tokyo
+        ports:
+            - 5432:5432
+        restart: always
+        volumes:
+            - pg-data:/var/lib/postgresql
+
+    redis:
+        image: redis:latest
+        ports:
+            - 6379:6379
+        volumes:
+            - redis-data:/data
+
+volumes:
+    pg-data:
+    redis-data:
