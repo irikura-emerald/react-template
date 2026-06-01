@@ -6,7 +6,7 @@ Docker + React + Next.js + TypeScript + TailwindCSS + PostgreSQL(Prisma経由) +
 
 ## 始め方
 
-1. .env.exampleのファイル名を.envに変更してください
+1. example.envをコピーし、.envを作成してください。
 1. プロジェクトルートで以下を実行してください
 
     ```bash
