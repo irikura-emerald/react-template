@@ -19,6 +19,7 @@ services:
         depends_on:
             - postgres
             - redis
+        # command: /bin/bash -c "npm run build && npm start" # 本番用
 
     postgres:
         image: postgres:18.4

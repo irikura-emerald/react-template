@@ -50,3 +50,7 @@ npx prisma generate
         select * from "User";
         select * from "Post";
         ```
+
+## 本番環境
+
+docker-compose.ymlの「本番用」のコメントアウトを外してください。
